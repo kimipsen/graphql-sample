@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace CurriculumVitaeModel.Data
 {
-    public interface ISkillRepository : IRepository<Skill>
+    public interface ILinkRepository : IRepository<Link>
     {
-        Task<IEnumerable<Skill>> SkillsForCV(int cvId);
+        Task<IEnumerable<Link>> LinksForCV(int cvId);
     }
 }

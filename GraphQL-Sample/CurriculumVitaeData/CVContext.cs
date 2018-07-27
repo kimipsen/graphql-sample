@@ -15,6 +15,7 @@ namespace CurriculumVitaeData
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
+        public virtual DbSet<Link> Links { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -166,6 +167,33 @@ namespace CurriculumVitaeData
             modelBuilder.Entity<Skill>()
                 .ToTable("skill");
             #endregion Skills
+
+            #region Links
+            modelBuilder.Entity<Link>()
+                .Property(x => x.Id)
+                .HasColumnName("id")
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Link>()
+                .Property(x => x.Url)
+                .HasColumnName("name")
+                .HasMaxLength(255)
+                .IsRequired(true);
+
+            modelBuilder.Entity<Link>()
+                .Property(x => x.Description)
+                .HasColumnName("description")
+                .HasMaxLength(500)
+                .IsRequired(true);
+
+            modelBuilder.Entity<Link>()
+                .HasOne(s => s.CV)
+                .WithMany(c => c.Links)
+                .HasForeignKey("cv_id");
+
+            modelBuilder.Entity<Link>()
+                .ToTable("link");
+            #endregion
         }
     }
 }

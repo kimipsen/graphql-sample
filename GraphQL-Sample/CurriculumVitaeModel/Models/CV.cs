@@ -9,6 +9,7 @@ namespace CurriculumVitaeModel.Models
             Companies = new List<Company>();
             Education = new List<Education>();
             Skills = new List<Skill>();
+            Links = new List<Link>();
         }
 
         public int Id { get; set; }
@@ -16,5 +17,6 @@ namespace CurriculumVitaeModel.Models
         public IList<Company> Companies { get; set; }
         public IList<Education> Education { get; set; }
         public IList<Skill> Skills { get; set; }
+        public IList<Link> Links { get; set; }
     }
 }

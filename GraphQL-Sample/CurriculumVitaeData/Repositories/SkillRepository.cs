@@ -26,7 +26,7 @@ namespace CurriculumVitaeData.Repositories
             return await context.Skills.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Skill>> SkillsByCV(int cvId)
+        public async Task<IEnumerable<Skill>> SkillsForCV(int cvId)
         {
             return await context.Skills.Where(x => x.CV.Id == cvId).ToListAsync();
         }
