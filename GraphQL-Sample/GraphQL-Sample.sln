@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurriculumVitaeModel", "Cur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurriculumVitaeData", "CurriculumVitaeData\CurriculumVitaeData.csproj", "{354D4C0C-23D6-44F4-B56F-DA5D48CBFAF3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{747515FE-7055-43F6-AE1C-E51F795DB2A0}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\create_cv_db.sql = ..\..\..\..\Desktop\create_cv_db.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
