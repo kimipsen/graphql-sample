@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  curriculumvitaeapi:
+    image: ${DOCKER_REGISTRY}curriculumvitaeapi
+    build:
+      context: .
+      dockerfile: CurriculumVitaeAPI/Dockerfile
