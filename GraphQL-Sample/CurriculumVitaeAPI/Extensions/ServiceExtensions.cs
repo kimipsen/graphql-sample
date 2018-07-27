@@ -24,6 +24,7 @@ namespace CurriculumVitaeAPI.Extensions
             services.AddSingleton<ICompanyRepository, CompanyRepository>();
             services.AddSingleton<IProjectRepository, ProjectRepository>();
             services.AddSingleton<IEducationRepository, EducationRepository>();
+            services.AddSingleton<ILinkRepository, LinkRepository>();
             services.AddSingleton<ICVRepository, CVRepository>();
             return services.AddSingleton<ISkillRepository, SkillRepository>();
         }
@@ -41,6 +42,7 @@ namespace CurriculumVitaeAPI.Extensions
             services.AddSingleton<CompanyType>();
             services.AddSingleton<ProjectType>();
             services.AddSingleton<EducationType>();
+            services.AddSingleton<LinkType>();
             services.AddSingleton<ExperienceEnum>();
             services.AddSingleton<SkillType>();
             var serviceProvider = services.BuildServiceProvider();
