@@ -176,7 +176,7 @@ namespace CurriculumVitaeData
 
             modelBuilder.Entity<Link>()
                 .Property(x => x.Url)
-                .HasColumnName("name")
+                .HasColumnName("url")
                 .HasMaxLength(255)
                 .IsRequired(true);
 

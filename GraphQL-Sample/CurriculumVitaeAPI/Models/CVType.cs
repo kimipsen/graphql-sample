@@ -35,7 +35,7 @@ namespace CurriculumVitaeAPI.Models
                 resolve: context =>
                     skillRepository
                     .SkillsForCV(context.Source.Id));
-            Field<ListGraphType<SkillType>>("links",
+            Field<ListGraphType<LinkType>>("links",
                 arguments:
                     new QueryArguments(
                         new QueryArgument<IntGraphType> { Name = "id" }),
