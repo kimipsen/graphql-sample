@@ -27,5 +27,6 @@ namespace CurriculumVitaeModel.Models
         /// </summary>
         public DateTime? EndDate { get; set; }
         public IList<Project> Projects { get; set; }
+        public CV CV { get; set; }
     }
 }

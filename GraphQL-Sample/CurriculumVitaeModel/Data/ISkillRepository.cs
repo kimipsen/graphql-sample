@@ -6,6 +6,6 @@ namespace CurriculumVitaeModel.Data
 {
     public interface ISkillRepository : IRepository<Skill>
     {
-        Task<IEnumerable<Skill>> SkillsUsedInProject(int projectId);
+        Task<IEnumerable<Skill>> SkillsByCV(int cvId);
     }
 }

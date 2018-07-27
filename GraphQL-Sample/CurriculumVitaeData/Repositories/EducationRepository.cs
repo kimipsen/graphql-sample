@@ -1,26 +1,34 @@
 ﻿using CurriculumVitaeModel.Data;
 using CurriculumVitaeModel.Models;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CurriculumVitaeData.Repositories
 {
     public class EducationRepository : IEducationRepository
     {
-        public Task<IEnumerable<Education>> All()
+        private readonly CVContext context;
+
+        public EducationRepository(CVContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
         }
 
-        public Task<IEnumerable<Education>> EducationForCV(int cvId)
+        public async Task<IEnumerable<Education>> All()
         {
-            throw new NotImplementedException();
+            return await context.Educations.ToListAsync();
         }
 
-        public Task<Education> Get(int id)
+        public async Task<IEnumerable<Education>> EducationForCV(int cvId)
         {
-            throw new NotImplementedException();
+            return await context.Educations.Where(x => x.CV.Id == cvId).ToListAsync();
+        }
+
+        public async Task<Education> Get(int id)
+        {
+            return await context.Educations.FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

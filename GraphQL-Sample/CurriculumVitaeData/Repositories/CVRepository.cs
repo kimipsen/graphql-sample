@@ -1,6 +1,6 @@
 ﻿using CurriculumVitaeModel.Data;
 using CurriculumVitaeModel.Models;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,14 +8,21 @@ namespace CurriculumVitaeData.Repositories
 {
     public class CVRepository : ICVRepository
     {
-        public Task<IEnumerable<CV>> All()
+        private readonly CVContext context;
+
+        public CVRepository(CVContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
         }
 
-        public Task<CV> Get(int id)
+        public async Task<IEnumerable<CV>> All()
         {
-            throw new NotImplementedException();
+            return await context.CVs.ToListAsync();
+        }
+
+        public async Task<CV> Get(int id)
+        {
+            return await context.CVs.FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

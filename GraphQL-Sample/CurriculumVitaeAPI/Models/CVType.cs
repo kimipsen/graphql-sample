@@ -8,7 +8,8 @@ namespace CurriculumVitaeAPI.Models
     {
         public CVType(
             ICompanyRepository companyRepository, 
-            IEducationRepository educationRepository)
+            IEducationRepository educationRepository,
+            ISkillRepository skillRepository)
         {
             Field(x => x.Id);
             Field(x => x.Name);
@@ -26,6 +27,13 @@ namespace CurriculumVitaeAPI.Models
                 resolve: context =>
                     educationRepository
                     .EducationForCV(context.Source.Id));
+            Field<ListGraphType<SkillType>>("skills",
+                arguments:
+                    new QueryArguments(
+                        new QueryArgument<IntGraphType> { Name = "id" }),
+                resolve: context =>
+                    skillRepository
+                    .SkillsByCV(context.Source.Id));
         }
     }
 }

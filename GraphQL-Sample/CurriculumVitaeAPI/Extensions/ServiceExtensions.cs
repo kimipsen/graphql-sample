@@ -1,8 +1,11 @@
 ﻿using CurriculumVitaeAPI.Models;
+using CurriculumVitaeData;
 using CurriculumVitaeData.Repositories;
 using CurriculumVitaeModel.Data;
 using GraphQL;
 using GraphQL.Types;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CurriculumVitaeAPI.Extensions
@@ -14,8 +17,10 @@ namespace CurriculumVitaeAPI.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection RegisterRepositories(this IServiceCollection services)
+        public static IServiceCollection RegisterRepositories(this IServiceCollection services, IConfiguration configuration)
         {
+            var connString = configuration["ConnectionStrings:CV"];
+            services.AddDbContext<CVContext>(options => options.UseSqlServer(connString));
             services.AddSingleton<ICompanyRepository, CompanyRepository>();
             services.AddSingleton<IProjectRepository, ProjectRepository>();
             services.AddSingleton<IEducationRepository, EducationRepository>();

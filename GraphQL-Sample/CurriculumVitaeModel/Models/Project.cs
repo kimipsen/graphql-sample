@@ -6,7 +6,6 @@ namespace CurriculumVitaeModel.Models
     {
         public Project()
         {
-            SkillsUsed = new List<Skill>();
         }
 
         public int Id { get; set; }
@@ -21,6 +20,6 @@ namespace CurriculumVitaeModel.Models
         /// <summary>
         /// A list of skills used in the current project.
         /// </summary>
-        public IList<Skill> SkillsUsed { get; set; }
+        public Company Company { get; set; }
     }
 }

@@ -11,13 +11,6 @@ namespace CurriculumVitaeAPI.Models
             Field(x => x.Id);
             Field(x => x.Name);
             Field(x => x.Description);
-            Field<ListGraphType<SkillType>>("skillsUsed",
-                arguments: 
-                    new QueryArguments(
-                        new QueryArgument<IntGraphType> { Name = "id" }),
-                resolve: context => 
-                    skillRepository
-                    .SkillsUsedInProject(context.Source.Id));
         }
     }
 }
