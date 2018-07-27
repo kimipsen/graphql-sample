@@ -8,6 +8,7 @@ namespace CurriculumVitaeAPI.Models
         public EducationType()
         {
             Field(x => x.Id);
+            Field(x => x.Title);
             Field(x => x.School);
             Field<StringGraphType>("startDate", 
                 resolve: context => 

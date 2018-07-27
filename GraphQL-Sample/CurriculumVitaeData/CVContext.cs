@@ -65,8 +65,9 @@ namespace CurriculumVitaeData
                 .IsRequired(true);
 
             modelBuilder.Entity<Education>()
-                .Property(x => x.CV)
-                .HasColumnName("cv_id");
+                .HasOne(e => e.CV)
+                .WithMany(c => c.Education)
+                .HasForeignKey("cv_id");
 
             modelBuilder.Entity<Education>()
                 .ToTable("education");
@@ -77,10 +78,6 @@ namespace CurriculumVitaeData
                 .Property(x => x.Id)
                 .HasColumnName("id")
                 .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<Company>()
-                .Property(x => x.CV)
-                .HasColumnName("cv_id");
 
             modelBuilder.Entity<Company>()
                 .Property(x => x.Name)
@@ -105,6 +102,11 @@ namespace CurriculumVitaeData
                 .IsRequired(true);
 
             modelBuilder.Entity<Company>()
+                .HasOne(c => c.CV)
+                .WithMany(c => c.Companies)
+                .HasForeignKey("cv_id");
+
+            modelBuilder.Entity<Company>()
                 .ToTable("company");
             #endregion Companies
 
@@ -127,6 +129,11 @@ namespace CurriculumVitaeData
                 .IsRequired(true);
 
             modelBuilder.Entity<Project>()
+                .HasOne(p => p.Company)
+                .WithMany(c => c.Projects)
+                .HasForeignKey("company_id");
+
+            modelBuilder.Entity<Project>()
                 .ToTable("project");
             #endregion Projects
 
@@ -137,10 +144,6 @@ namespace CurriculumVitaeData
                .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Skill>()
-                .Property(x => x.CV)
-                .HasColumnName("cv_id");
-
-            modelBuilder.Entity<Skill>()
                 .Property(x => x.Name)
                 .HasColumnName("name")
                 .HasMaxLength(50)
@@ -149,7 +152,16 @@ namespace CurriculumVitaeData
             modelBuilder.Entity<Skill>()
                 .Property(x => x.Experience)
                 .HasColumnName("experience")
+                .HasConversion(
+                    v => (int)v,
+                    v => (Experience)v
+                )
                 .IsRequired(true);
+
+            modelBuilder.Entity<Skill>()
+                .HasOne(s => s.CV)
+                .WithMany(c => c.Skills)
+                .HasForeignKey("cv_id");
 
             modelBuilder.Entity<Skill>()
                 .ToTable("skill");

@@ -14,14 +14,14 @@ namespace CurriculumVitaeAPI.Models
             Field(x => x.Id);
             Field(x => x.Name);
             Field<ListGraphType<CompanyType>>("companies",
-                arguments: 
+                arguments:
                     new QueryArguments(
                         new QueryArgument<IntGraphType> { Name = "id" }),
                 resolve: context =>
                     companyRepository
                     .CompaniesForCV(context.Source.Id));
             Field<ListGraphType<EducationType>>("education",
-                arguments: 
+                arguments:
                     new QueryArguments(
                         new QueryArgument<IntGraphType> { Name = "id" }),
                 resolve: context =>
