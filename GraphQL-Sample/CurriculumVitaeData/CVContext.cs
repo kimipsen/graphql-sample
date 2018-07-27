@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CurriculumVitaeData
 {
+    /// <summary>
+    /// Database Context for the CV system.
+    /// </summary>
     public class CVContext : DbContext
     {
         public CVContext(DbContextOptions options)
@@ -10,11 +13,29 @@ namespace CurriculumVitaeData
         {
         }
 
+        /// <summary>
+        /// List of all CVs
+        /// </summary>
         public virtual DbSet<CV> CVs { get; set; }
+        /// <summary>
+        /// List of all educations
+        /// </summary>
         public virtual DbSet<Education> Educations { get; set; }
+        /// <summary>
+        /// List of all companies
+        /// </summary>
         public virtual DbSet<Company> Companies { get; set; }
+        /// <summary>
+        /// List of all projects
+        /// </summary>
         public virtual DbSet<Project> Projects { get; set; }
+        /// <summary>
+        /// List of all skills
+        /// </summary>
         public virtual DbSet<Skill> Skills { get; set; }
+        /// <summary>
+        /// List of all links
+        /// </summary>
         public virtual DbSet<Link> Links { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

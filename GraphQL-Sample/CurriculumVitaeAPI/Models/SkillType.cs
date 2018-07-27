@@ -3,6 +3,9 @@ using GraphQL.Types;
 
 namespace CurriculumVitaeAPI.Models
 {
+    /// <summary>
+    /// Map Skill to a graphql object
+    /// </summary>
     public class SkillType : ObjectGraphType<Skill>
     {
         public SkillType()

@@ -4,9 +4,12 @@ using GraphQL.Types;
 
 namespace CurriculumVitaeAPI.Models
 {
+    /// <summary>
+    /// Map Project to a graphql object
+    /// </summary>
     public class ProjectType : ObjectGraphType<Project>
     {
-        public ProjectType(ISkillRepository skillRepository)
+        public ProjectType()
         {
             Field(x => x.Id);
             Field(x => x.Name);

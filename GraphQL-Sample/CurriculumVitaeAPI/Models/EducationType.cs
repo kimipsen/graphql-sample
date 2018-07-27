@@ -3,8 +3,14 @@ using GraphQL.Types;
 
 namespace CurriculumVitaeAPI.Models
 {
+    /// <summary>
+    /// Map Education to a graphql object
+    /// </summary>
     public class EducationType : ObjectGraphType<Education>
     {
+        /// <summary>
+        /// Maps dates as "yyyy-MM".
+        /// </summary>
         public EducationType()
         {
             Field(x => x.Id);

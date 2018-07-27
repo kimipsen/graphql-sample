@@ -4,8 +4,18 @@ using GraphQL.Types;
 
 namespace CurriculumVitaeAPI.Models
 {
+    /// <summary>
+    /// Map CV to a graphql object
+    /// </summary>
     public class CVType : ObjectGraphType<CV>
     {
+        /// <summary>
+        /// Includes advanced mappings for foreign keys.
+        /// </summary>
+        /// <param name="companyRepository"></param>
+        /// <param name="educationRepository"></param>
+        /// <param name="skillRepository"></param>
+        /// <param name="linkRepository"></param>
         public CVType(
             ICompanyRepository companyRepository, 
             IEducationRepository educationRepository,
@@ -21,6 +31,7 @@ namespace CurriculumVitaeAPI.Models
                 resolve: context =>
                     companyRepository
                     .CompaniesForCV(context.Source.Id));
+
             Field<ListGraphType<EducationType>>("education",
                 arguments:
                     new QueryArguments(
@@ -28,6 +39,7 @@ namespace CurriculumVitaeAPI.Models
                 resolve: context =>
                     educationRepository
                     .EducationForCV(context.Source.Id));
+
             Field<ListGraphType<SkillType>>("skills",
                 arguments:
                     new QueryArguments(
@@ -35,6 +47,7 @@ namespace CurriculumVitaeAPI.Models
                 resolve: context =>
                     skillRepository
                     .SkillsForCV(context.Source.Id));
+
             Field<ListGraphType<LinkType>>("links",
                 arguments:
                     new QueryArguments(

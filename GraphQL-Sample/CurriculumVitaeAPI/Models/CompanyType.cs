@@ -4,8 +4,16 @@ using GraphQL.Types;
 
 namespace CurriculumVitaeAPI.Models
 {
+    /// <summary>
+    /// Map Company to a graphql object
+    /// </summary>
     public class CompanyType : ObjectGraphType<Company>
     {
+        /// <summary>
+        /// Maps dates as "yyyy-MM".
+        /// Also includes a list of related projects.
+        /// </summary>
+        /// <param name="projectRepository"></param>
         public CompanyType(IProjectRepository projectRepository)
         {
             Field(x => x.Id);

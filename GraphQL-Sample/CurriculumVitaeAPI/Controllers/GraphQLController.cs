@@ -14,12 +14,22 @@ namespace CurriculumVitaeAPI.Controllers
         private readonly IDocumentExecuter documentExecuter;
         private readonly ISchema schema;
 
+        /// <summary>
+        /// GraphQL query engine handler
+        /// </summary>
+        /// <param name="documentExecuter"></param>
+        /// <param name="schema"></param>
         public GraphQLController(IDocumentExecuter documentExecuter, ISchema schema)
         {
             this.documentExecuter = documentExecuter;
             this.schema = schema;
         }
 
+        /// <summary>
+        /// Single endpoint access for the GraphQL query engine.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]GraphQLQuery query)
         {
