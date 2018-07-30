@@ -11,7 +11,8 @@ namespace CurriculumVitaeAPI.Models
         public CVQuery(ICVRepository cvRepository, 
             ICompanyRepository companyRepository,
             IProjectRepository projectRepository,
-            IEducationRepository educationRepository)
+            IEducationRepository educationRepository,
+            ILinkRepository linkRepository)
         {
             Field<CVType>("cv",
                 arguments: 
@@ -53,7 +54,7 @@ namespace CurriculumVitaeAPI.Models
                     new QueryArguments(
                         new QueryArgument<IntGraphType> { Name = "id" }),
                 resolve: context =>
-                    educationRepository
+                    linkRepository
                     .Get(context.GetArgument<int>("id")));
         }
     }
